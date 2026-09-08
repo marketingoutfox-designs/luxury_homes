@@ -1,0 +1,382 @@
+:root {
+    --services-navy: #112438;
+    --services-card: #223a52;
+    --services-gold: #c49a27;
+    --services-line: #315879;
+}
+
+.services-design {
+    background: var(--services-navy);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.services-design main {
+    overflow: hidden;
+    background: var(--services-navy);
+}
+
+.services-hero {
+    position: relative;
+    height: 438px;
+    background: url('/images/luxury-homes/hero.jpg') center 57% / cover no-repeat;
+}
+
+.services-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(7, 15, 24, .82) 0%, rgba(7, 15, 24, .74) 40%, rgba(7, 15, 24, .4) 100%);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+.services-hero-copy {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: min(1088px, calc(100% - 48px));
+    height: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+    padding: 87px 0 38px;
+}
+
+.services-kicker {
+    margin: 0 0 9px;
+    color: #fff;
+    font-size: 15px !important;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: .22em;
+}
+
+.services-hero h1 {
+    margin: 0;
+    font-size: 31px;
+    font-weight: 300;
+    line-height: 1.31;
+    letter-spacing: .13em;
+}
+
+.services-hero h1 em,
+.services-hero-tagline strong {
+    color: var(--services-gold);
+    font-style: normal;
+    font-weight: 300;
+}
+
+.services-hero-tagline {
+    margin: auto 0 0;
+    font-size: 11px !important;
+    line-height: 1.65;
+    letter-spacing: .19em;
+}
+
+.services-catalogue {
+    background: var(--services-navy);
+}
+
+.services-shell {
+    width: min(1045px, calc(100% - 64px));
+    margin: 0 auto;
+    padding: 72px 0 0;
+}
+
+.services-introduction {
+    margin: 0 0 92px;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 300;
+    line-height: 1.7;
+    letter-spacing: .09em;
+}
+
+.services-card-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 32px;
+    row-gap: 42px;
+    padding-bottom: 44px;
+}
+
+.services-card-grid::after {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: calc(100vw - 24px);
+    height: 1px;
+    background: var(--services-line);
+    content: '';
+    transform: translateX(-50%);
+}
+
+.services-row-divider {
+    grid-column: 1 / -1;
+    width: calc(100% + 72px);
+    height: 1px;
+    margin-left: -36px;
+    background: var(--services-line);
+}
+
+.services-card {
+    position: relative;
+    isolation: isolate;
+    min-width: 0;
+    height: 300px;
+    overflow: hidden;
+    padding: 27px 28px 24px;
+    background: var(--services-card);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.services-card::before,
+.services-card::after {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    content: '';
+    opacity: 0;
+    transition: opacity .55s ease, transform .8s cubic-bezier(.2, .7, .2, 1);
+}
+
+.services-card::before {
+    background: url('/images/luxury-homes/hero.jpg') 28% 57% / 520px auto no-repeat;
+    transform: scale(1.08);
+}
+
+.services-card::after {
+    z-index: -1;
+    background: rgba(10, 26, 42, .42);
+    transition-duration: .45s;
+}
+
+.services-card:hover::before,
+.services-card:focus-within::before,
+.services-card:hover::after,
+.services-card:focus-within::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.services-card-number {
+    display: block;
+    margin-bottom: 5px;
+    color: transparent;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 48px;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, .92);
+}
+
+.services-card h2 {
+    min-height: 48px;
+    margin: 0 0 10px;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: .12em;
+}
+
+.services-card p {
+    margin: 0;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 400;
+    line-height: 1.55;
+    letter-spacing: .11em;
+}
+
+.development-options {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: min(1040px, calc(100vw - 100px));
+    margin-left: 50%;
+    gap: 116px;
+    padding: 50px 0 62px;
+    transform: translateX(-50%);
+}
+
+.development-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 256px;
+    padding: 38px 42px 38px 118px;
+    border: 1px solid var(--services-gold);
+    border-radius: 22px;
+}
+
+.development-card h2 {
+    margin: 0 0 4px;
+    color: var(--services-gold);
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: .13em;
+}
+
+.development-card p {
+    margin: 0;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 15px !important;
+    font-weight: 300;
+    line-height: 1.55;
+    letter-spacing: .11em;
+}
+
+.development-icon {
+    position: absolute;
+    top: 50%;
+    left: -58px;
+    display: grid;
+    width: 116px;
+    height: 116px;
+    place-items: center;
+    border-radius: 50%;
+    background: #1f3a55;
+    color: var(--services-gold);
+    transform: translateY(-50%);
+    transition: color .4s ease, background-color .4s ease, transform .5s cubic-bezier(.2, .7, .2, 1);
+}
+
+.development-icon::before {
+    position: absolute;
+    inset: 18px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    content: '';
+}
+
+.development-icon svg {
+    position: relative;
+    z-index: 1;
+    width: 54px;
+    height: 54px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.25;
+}
+
+.development-card:hover .development-icon {
+    background: rgba(196, 154, 39, .82);
+    color: #fff;
+    transform: translateY(-50%) scale(1.04);
+}
+
+.services-end-dot {
+    display: block;
+    width: 13px;
+    height: 13px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background: #3973aa;
+    transform: translateY(6px);
+}
+
+@media (max-width: 1120px) {
+    .services-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .services-row-divider {
+        display: none;
+    }
+
+    .development-options {
+        width: calc(100vw - 92px);
+        gap: 76px;
+    }
+
+    .development-card {
+        min-height: 230px;
+        padding: 32px 28px 32px 82px;
+    }
+
+    .development-card h2 {
+        font-size: 17px;
+    }
+
+    .development-card p {
+        font-size: 13px !important;
+    }
+
+    .development-icon {
+        left: -48px;
+        width: 96px;
+        height: 96px;
+    }
+}
+
+@media (max-width: 700px) {
+    .services-hero {
+        height: 430px;
+        background-position: 57% center;
+    }
+
+    .services-hero-copy {
+        width: calc(100% - 48px);
+        padding-top: 75px;
+    }
+
+    .services-hero h1 {
+        font-size: 29px;
+    }
+
+    .services-shell {
+        padding-top: 45px;
+    }
+
+    .services-introduction br {
+        display: none;
+    }
+
+    .services-card-grid {
+        gap: 22px;
+        padding-bottom: 32px;
+    }
+
+    .development-options {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        width: calc(100vw - 78px);
+        padding: 40px 0 55px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .services-card {
+        height: auto;
+        min-height: 225px;
+    }
+
+    .development-card {
+        min-height: 210px;
+        padding: 28px 24px 28px 60px;
+    }
+
+    .development-icon {
+        left: -39px;
+        width: 78px;
+        height: 78px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .services-card::before,
+    .services-card::after,
+    .development-icon {
+        transition: none;
+    }
+}

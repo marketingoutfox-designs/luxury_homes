@@ -1,0 +1,244 @@
+body.about-design {
+    --about-navy: #162438;
+    --about-gold: #c69a25;
+    --about-line: #31516e;
+    background: var(--about-navy);
+    color: #f4f3ef;
+}
+
+.about-design main { background: var(--about-navy); }
+
+.about-hero {
+    position: relative;
+    height: 505px;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.about-hero-image {
+    position: absolute;
+    inset: -7% -3%;
+    z-index: -3;
+    background: url('/images/luxury-homes/hero.jpg') center 54% / cover no-repeat;
+    transform: translate3d(0, var(--about-hero-shift, 0), 0) scale(1.06);
+    transition: transform .12s linear;
+    will-change: transform;
+}
+
+.about-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(90deg, rgba(4, 12, 21, .62) 0%, rgba(4, 12, 21, .35) 42%, rgba(4, 12, 21, .08) 78%);
+}
+
+.about-hero-copy {
+    position: absolute;
+    top: 50%;
+    left: max(7.1%, calc((100% - 1035px) / 2));
+    transform: translateY(-46%);
+}
+
+.about-hero h1 {
+    margin: 0;
+    color: #f5f3ee;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.28;
+    letter-spacing: .11em;
+}
+
+.about-hero h1 em,
+.about-hero-copy strong {
+    color: var(--about-gold);
+    font-style: normal;
+    font-weight: 400;
+}
+
+.about-hero-copy p {
+    margin: 145px 0 0;
+    color: #f5f3ee;
+    font-size: 13px !important;
+    font-weight: 300;
+    line-height: 1.55;
+    letter-spacing: .18em;
+}
+
+.about-story {
+    width: min(1035px, calc(100% - 48px));
+    margin: 0 auto;
+    padding: 49px 0 48px;
+}
+
+.about-introduction {
+    max-width: 930px;
+    margin: 0 auto 67px;
+    color: rgba(245, 243, 238, .88);
+    font-size: 13px !important;
+    font-weight: 300;
+    line-height: 1.55;
+    letter-spacing: .075em;
+    text-align: center;
+}
+
+.about-profile {
+    display: grid;
+    grid-template-columns: 265px minmax(0, 1fr);
+    align-items: start;
+    gap: 31px;
+    margin: 0 0 82px;
+}
+
+.about-profile-photo {
+    height: 340px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translate3d(-52px, 24px, 0) scale(.965);
+    transition: opacity .75s ease, transform .9s cubic-bezier(.16, 1, .3, 1);
+}
+
+.about-profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 42%;
+    filter: grayscale(1) contrast(1.03);
+    transform: scale(1.015);
+    transition: filter .65s ease, transform 1s cubic-bezier(.16, 1, .3, 1);
+}
+
+.about-profile-copy {
+    padding-top: 2px;
+    opacity: 0;
+    transform: translate3d(46px, 25px, 0);
+    transition: opacity .75s .08s ease, transform .9s .08s cubic-bezier(.16, 1, .3, 1);
+}
+
+.about-profile-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 0 0 20px;
+}
+
+.about-profile-heading > div { flex: 0 0 auto; }
+
+.about-profile-heading span {
+    height: 1px;
+    flex: 1;
+    background: var(--about-line);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .9s .35s cubic-bezier(.16, 1, .3, 1);
+}
+
+.about-profile h2 {
+    margin: 0 0 4px;
+    color: #f5f3ee;
+    font-size: 27px;
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: .2em;
+    white-space: nowrap;
+}
+
+.about-profile h3 {
+    margin: 0;
+    color: var(--about-gold);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: .19em;
+}
+
+.about-profile-copy p {
+    margin: 0 0 18px;
+    color: rgba(245, 243, 238, .9);
+    font-size: 13px !important;
+    font-weight: 300;
+    line-height: 1.48;
+    letter-spacing: .06em;
+}
+
+.about-profile-reversed {
+    grid-template-columns: minmax(0, 1fr) 265px;
+}
+
+.about-profile-reversed .about-profile-photo {
+    grid-column: 2;
+    grid-row: 1;
+    transform: translate3d(52px, 24px, 0) scale(.965);
+}
+
+.about-profile-reversed .about-profile-copy {
+    grid-column: 1;
+    grid-row: 1;
+    transform: translate3d(-46px, 25px, 0);
+}
+
+.about-profile-reversed .about-profile-heading span {
+    order: 2;
+}
+
+.about-profile.is-visible .about-profile-photo,
+.about-profile.is-visible .about-profile-copy {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+.about-profile.is-visible .about-profile-heading span { transform: scaleX(1); }
+
+.about-profile:hover .about-profile-photo img {
+    filter: grayscale(.2) contrast(1.02);
+    transform: scale(1.065);
+}
+
+.about-scroll-reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity .8s ease, transform .85s cubic-bezier(.16, 1, .3, 1);
+}
+
+.about-scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+.about-end-dot {
+    display: block;
+    width: 12px;
+    height: 12px;
+    margin: 5px auto 0;
+    border-radius: 50%;
+    background: #3973aa;
+}
+
+@media (max-width: 850px) {
+    .about-profile { grid-template-columns: 235px minmax(0, 1fr); gap: 27px; }
+    .about-profile-reversed { grid-template-columns: minmax(0, 1fr) 235px; }
+    .about-profile-photo { height: 325px; }
+    .about-profile h2 { font-size: 22px; white-space: normal; }
+    .about-profile-copy p { line-height: 1.55; }
+}
+
+@media (max-width: 660px) {
+    .about-hero { height: 500px; }
+    .about-hero-copy { right: 22px; left: 24px; }
+    .about-hero h1 { font-size: 29px; }
+    .about-hero-copy p { margin-top: 150px; }
+    .about-story { width: min(100% - 44px, 1035px); padding-top: 42px; }
+    .about-introduction { margin-bottom: 52px; }
+    .about-profile,
+    .about-profile-reversed { display: flex; flex-direction: column; gap: 28px; margin-bottom: 65px; }
+    .about-profile-photo,
+    .about-profile-reversed .about-profile-photo { width: 100%; height: auto; aspect-ratio: 1198 / 1546; transform: translate3d(0, 34px, 0) scale(.97); }
+    .about-profile-copy,
+    .about-profile-reversed .about-profile-copy { transform: translate3d(0, 30px, 0); }
+    .about-profile-heading span { display: none; }
+    .about-profile h2 { font-size: 23px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-hero-image { transition: none; }
+    .about-profile-photo,
+    .about-profile-copy,
+    .about-profile-heading span,
+    .about-scroll-reveal { opacity: 1; transform: none; transition: none; }
+}
