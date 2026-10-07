@@ -1,7 +1,7 @@
 @extends('admin.layout')
 @section('title', 'Project Categories')
 @section('heading', 'Project Categories')
-@section('subheading', 'Create and organize portfolio groups such as completed, ongoing, and upcoming.')
+@section('subheading', 'Create and organize portfolio groups such as completed and ongoing.')
 @section('content')
 <div class="admin-card">
     <div class="list-head">

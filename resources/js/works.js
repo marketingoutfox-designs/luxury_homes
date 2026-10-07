@@ -75,7 +75,8 @@ if (worksPage) {
         if (!modal || !panel) return;
         lastTrigger = card;
         modal.querySelector('#works-modal-kicker').textContent = `Project ${card.dataset.projectNumber}`;
-        modal.querySelector('#works-modal-title').textContent = card.dataset.projectTitle;
+        modal.querySelector('#works-modal-title').textContent = card.dataset.projectLabel;
+        modal.querySelector('#works-modal-years').textContent = card.dataset.projectYears || '—';
         modal.querySelector('#works-modal-name').textContent = card.dataset.projectTitle;
         modal.querySelector('#works-modal-location').textContent = card.dataset.projectLocation;
         modal.querySelector('#works-modal-address').textContent = card.dataset.projectAddress || '—';

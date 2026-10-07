@@ -80,6 +80,7 @@ const closeHomeProjectModal = () => {
 const openHomeProjectModal = trigger => {
     if (!homeProjectModal || !homeProjectModalPanel) return;
     homeProjectLastTrigger = trigger;
+    homeProjectModal.querySelector('[data-home-modal-years]').textContent = trigger.dataset.projectYears || '—';
     homeProjectModal.querySelector('[data-home-modal-name]').textContent = trigger.dataset.projectTitle || 'House Design';
     homeProjectModal.querySelector('[data-home-modal-location]').textContent = trigger.dataset.projectLocation || 'New Delhi, Delhi';
     homeProjectModal.querySelector('[data-home-modal-address]').textContent = trigger.dataset.projectAddress || '—';

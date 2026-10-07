@@ -40,6 +40,15 @@ class Project extends Model
         return $this->hasMany(ProjectMedia::class)->orderBy('sort_order')->orderBy('id');
     }
 
+    public function getThumbnailPathAttribute(): string
+    {
+        if ($this->slug === 'aurum-residences') {
+            return '/images/luxury-homes/aurum-thumbnail.jpeg';
+        }
+
+        return $this->image_path ?: '/images/luxury-homes/landing-project-card.png';
+    }
+
     public function getRouteKeyName(): string
     {
         return 'slug';

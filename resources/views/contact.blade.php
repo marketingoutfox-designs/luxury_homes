@@ -24,19 +24,19 @@
                 <a class="contact-office-email" href="mailto:Contact@luxuryhomesbyrk.com">Contact@luxuryhomesbyrk.com</a>
                 <div class="contact-socials" aria-label="Social media links">
                     <a href="#" aria-label="Facebook">f</a>
-                        <a href="#" aria-label="Instagram">
+                        <a href="https://www.instagram.com/luxuryhomesbyrk" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                             <svg viewBox="0 0 24 24" aria-hidden="true">
                                 <rect x="3" y="3" width="18" height="18" rx="5"></rect>
                                 <circle cx="12" cy="12" r="4"></circle>
                                 <circle class="instagram-dot" cx="17.4" cy="6.7" r="1"></circle>
                             </svg>
                         </a>
-                    <a href="#" aria-label="X">𝕏</a>
+                    <a href="https://www.linkedin.com/company/luxury-homes-by-rk/" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">in</span></a>
                 </div>
             </aside>
 
             <div class="contact-form-column">
-                <h2 id="contact-form-title">LET'S BUILD YOUR VISION TOGETHER</h2>
+                <h2 id="contact-form-title">TELL US ABOUT YOUR DREAM HOME</h2>
                 <p>Fill out the form and our manager will contact you for consultation.</p>
 
                 @if (session('success'))
@@ -92,7 +92,6 @@
                         <span class="contact-quote-mark">“</span>
                         <p>This is a really, really lovely house — absolutely brilliant! The first thing you notice is the incredible feeling of space; the bedrooms and bathrooms have been designed so well and feel wonderfully spacious. The balcony is an absolute masterpiece—it creates such a great atmosphere. From the impressive pillars to the high-quality finish you see everywhere you look, the craftsmanship really speaks for itself. Even the small details, like the green patch in the parking area, make a huge difference. I haven't seen many houses like this; it's truly superb and a pleasure to experience!</p>
                         <strong>Mrs Kalpana Sharma</strong>
-                        <small>CEO– MKS</small>
                     </article>
                 @endforeach
             </div>
@@ -101,6 +100,5 @@
             <button class="contact-testimonial-arrow contact-testimonial-arrow-next" type="button" data-contact-slide="1" aria-label="Next testimonial">›</button>
         </div>
 
-        <a class="contact-video-link" href="#" aria-label="View client testimonial video"><em>Click</em> to view video</a>
     </section>
 @endsection

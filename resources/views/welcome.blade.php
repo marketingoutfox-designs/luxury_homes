@@ -74,7 +74,7 @@
             <span></span>
         </div>
         <div class="home-intro-copy reveal">
-            <p>Founded in <strong>2018 by Rohit Kapoor</strong>, the company has taken a remarkable leap in just seven years, evolving into one of the <strong>most preferred designer builder firms in East Delhi</strong>. With a strong focus on <strong>quality craftsmanship</strong>, <strong>innovative design solutions, and a deeply client-centric approach</strong>, it has consistently earned the trust of homeowners seeking premium, personalised living spaces.</p>
+            <p>Founded in <strong>2018 by Rohit Kapoor</strong>, the company has taken a remarkable leap in just eight years, evolving into one of the <strong>most preferred designer builder firms in East Delhi</strong>. With a strong focus on <strong>quality craftsmanship</strong>, <strong>innovative design solutions, and a deeply client-centric approach</strong>, it has consistently earned the trust of homeowners seeking premium, personalised living spaces.</p>
             <p>Today, the company stands as a first choice for clients <strong>who value transparency, attention to detail, and a truly luxury construction experience.</strong></p>
         </div>
 
@@ -163,7 +163,7 @@
                 <p>We shape spaces where form, function, and emotion come together—creating environments that elevate everyday living and stand as enduring expressions of design, while translating vision into refined realities that blend aesthetics with purpose to craft homes that are intuitive, elegant, and deeply personal.</p>
                 <div class="project-toolbar">
                     <button class="active" type="button" data-project-filter="all" aria-pressed="true"><i aria-hidden="true"><b></b></i><span class="filter-accent">All</span></button>
-                    <button type="button" data-project-filter="upcoming" aria-pressed="false"><i aria-hidden="true"><b></b></i><span class="filter-accent">Upcoming</span> Projects</button>
+                    <button type="button" data-project-filter="ongoing" aria-pressed="false"><i aria-hidden="true"><b></b></i><span class="filter-accent">Ongoing</span> Projects</button>
                     <button type="button" data-project-filter="completed" aria-pressed="false"><i aria-hidden="true"><b></b></i><span class="filter-accent">Completed</span> Projects</button>
                 </div>
             </div>
@@ -193,10 +193,12 @@
                     }
                 @endphp
                 <a
-                    class="home-project-card reveal"
-                    data-project-status="{{ str_contains(strtolower($project->status ?: ''), 'complet') ? 'completed' : 'upcoming' }}"
+                    class="home-project-card reveal{{ $project->slug === 'aurum-residences' ? ' project-thumbnail-contain' : '' }}"
+                    data-project-status="{{ str_contains(strtolower($project->status ?: ''), 'complet') ? 'completed' : 'ongoing' }}"
                     data-home-project
                     data-project-title="{{ $project->title }}"
+                    data-project-years="{{ data_get($project->facts, 'years', '—') }}"
+                    data-project-label="{{ $project->title }} ({{ data_get($project->facts, 'years', '—') }}) — {{ $project->status }}"
                     data-project-location="{{ $project->location ?: 'New Delhi, Delhi' }}"
                     data-project-address="{{ data_get($project->facts, 'address') }}"
                     data-project-media="{{ $popupMedia->toJson() }}"
@@ -205,10 +207,10 @@
                 >
                     <span class="project-number"><b>{{ $loop->iteration }}</b></span>
                     <div class="home-project-image">
-                        <img src="{{ $project->image_path ?: '/images/luxury-homes/landing-project-card.png' }}" alt="{{ $project->title }}">
+                        <img src="{{ $project->thumbnail_path }}" alt="{{ $project->title }}">
                     </div>
                     <div>
-                        <span>{{ $project->status }} · {{ $project->location }}</span>
+                        <span>{{ data_get($project->facts, 'years') }} — {{ $project->status }}</span>
                         <h3>{{ $project->title }}</h3>
                     </div>
                 </a>
@@ -224,7 +226,7 @@
             </div>
 
             <div class="home-project-modal-facts">
-                <div><small>Year</small><strong>2023 - 2025</strong></div>
+                <div><small>Year</small><strong data-home-modal-years>—</strong></div>
                 <div><small>Name</small><strong data-home-modal-name>House Design</strong></div>
                 <div><small>Location</small><strong data-home-modal-location>New Delhi, Delhi</strong></div>
                 <div><small>Address</small><strong data-home-modal-address>—</strong></div>

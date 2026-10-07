@@ -21,8 +21,8 @@
             <button class="works-filter is-active" type="button" data-works-filter="all">
                 <span class="works-arrow" aria-hidden="true">&#8594;</span><span>All</span>
             </button>
-            <button class="works-filter" type="button" data-works-filter="upcoming">
-                <span class="works-arrow" aria-hidden="true">&#8594;</span><span>Upcoming Projects</span>
+            <button class="works-filter" type="button" data-works-filter="ongoing">
+                <span class="works-arrow" aria-hidden="true">&#8594;</span><span>Ongoing Projects</span>
             </button>
             <button class="works-filter" type="button" data-works-filter="completed">
                 <span class="works-arrow" aria-hidden="true">&#8594;</span><span>Completed Projects</span>
@@ -34,7 +34,7 @@
         <div class="works-grid">
             @forelse ($projects as $project)
                 @php
-                    $filterStatus = str_contains(strtolower($project->status ?: ''), 'complet') ? 'completed' : 'upcoming';
+                    $filterStatus = str_contains(strtolower($project->status ?: ''), 'complet') ? 'completed' : 'ongoing';
                     $projectNumber = str_pad((string) $loop->iteration, 2, '0', STR_PAD_LEFT);
                     $popupMedia = $project->media->map(fn ($media) => [
                         'type' => $media->type,
@@ -51,17 +51,22 @@
                             $popupMedia = collect([['type' => 'image', 'path' => '/images/luxury-homes/landing-project-card.png', 'mime' => 'image/webp']]);
                         }
                     }
-                    $cardImage = $project->image_path ?: '/images/luxury-homes/landing-project-card.png';
+                    $cardImage = $project->thumbnail_path;
                     $hoverImage = $project->hero_image_path
                         ?: optional($project->media->first(fn ($media) => $media->type === 'image' && $media->path !== $cardImage))->path
                         ?: $cardImage;
+                    if ($project->slug === 'aurum-residences') {
+                        $hoverImage = $cardImage;
+                    }
                 @endphp
                 <button
-                    class="works-card"
+                    class="works-card{{ $project->slug === 'aurum-residences' ? ' project-thumbnail-contain' : '' }}"
                     type="button"
                     data-project-status="{{ $filterStatus }}"
                     data-project-number="{{ $projectNumber }}"
                     data-project-title="{{ $project->title }}"
+                    data-project-years="{{ data_get($project->facts, 'years', '—') }}"
+                    data-project-label="{{ $project->title }} ({{ data_get($project->facts, 'years', '—') }}) — {{ $project->status }}"
                     data-project-location="{{ $project->location ?: 'New Delhi, Delhi' }}"
                     data-project-address="{{ data_get($project->facts, 'address') }}"
                     data-project-summary="{{ $project->summary ?: 'A considered residence shaped around proportion, material, light, and the way its owners live.' }}"
@@ -75,7 +80,7 @@
                     </span>
                     <span class="works-card-shade" aria-hidden="true"></span>
                     <span class="works-card-caption">
-                        <small>Project {{ $projectNumber }}</small>
+                        <small>{{ data_get($project->facts, 'years') }} — {{ $project->status }}</small>
                         <strong>{{ $project->title }}</strong>
                         <i aria-hidden="true">&#8594;</i>
                     </span>
@@ -96,7 +101,7 @@
                 </div>
 
                 <div class="works-modal-facts">
-                    <div><small>Year</small><strong>2023 - 2025</strong></div>
+                    <div><small>Year</small><strong id="works-modal-years">—</strong></div>
                     <div><small>Name</small><strong id="works-modal-name">House Design</strong></div>
                     <div><small>Location</small><strong id="works-modal-location">New Delhi, Delhi</strong></div>
                     <div><small>Address</small><strong id="works-modal-address">—</strong></div>

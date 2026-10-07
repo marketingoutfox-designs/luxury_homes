@@ -249,6 +249,7 @@ class AdminController extends Controller
             'slug' => ['nullable', 'string', 'max:255'],
             'location' => ['nullable', 'string', 'max:255'],
             'address' => ['nullable', 'string', 'max:500'],
+            'years' => ['nullable', 'string', 'max:30'],
             'status' => ['required', 'string', 'max:255'],
             'image_path' => ['nullable', 'string', 'max:255'],
             'hero_image_path' => ['nullable', 'string', 'max:255'],
@@ -265,8 +266,8 @@ class AdminController extends Controller
             'is_active' => ['nullable', 'boolean'],
         ]);
 
-        $data['facts'] = array_merge($project?->facts ?? [], ['address' => $data['address'] ?? null]);
-        unset($data['address']);
+        $data['facts'] = array_merge($project?->facts ?? [], ['address' => $data['address'] ?? null, 'years' => $data['years'] ?? data_get($project?->facts, 'years')]);
+        unset($data['address'], $data['years']);
         $data['slug'] = $this->uniqueSlug(Project::class, $data['slug'] ?: $data['title'], $project?->id);
         $data['sort_order'] = $data['sort_order'] ?? 0;
         $data['is_featured'] = $request->boolean('is_featured');

@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
 
         $completed = ProjectCategory::updateOrCreate(['slug' => 'completed'], ['name' => 'Completed', 'sort_order' => 1, 'is_active' => true]);
         $ongoing = ProjectCategory::updateOrCreate(['slug' => 'ongoing'], ['name' => 'Ongoing', 'sort_order' => 2, 'is_active' => true]);
-        $upcoming = ProjectCategory::updateOrCreate(['slug' => 'upcoming'], ['name' => 'Upcoming', 'sort_order' => 3, 'is_active' => true]);
+        $upcoming = ProjectCategory::updateOrCreate(['slug' => 'upcoming'], ['name' => 'Ongoing', 'sort_order' => 3, 'is_active' => true]);
 
         collect([
             ['Aurum Residences', 'aurum-residences', 'New Delhi', $completed->id],
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
                     'project_category_id' => $project[3],
                     'title' => $project[0],
                     'location' => $project[2],
-                    'status' => $index === 2 ? 'Ongoing' : ($index === 4 ? 'Upcoming' : 'Completed'),
+                    'status' => $index === 2 ? 'Ongoing' : ($index === 4 ? 'Ongoing' : 'Completed'),
                     'image_path' => '/images/luxury-homes/hero.jpg',
                     'hero_image_path' => '/images/luxury-homes/hero.jpg',
                     'summary' => 'A refined residence shaped around proportion, light, and long-term value.',

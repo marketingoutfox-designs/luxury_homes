@@ -748,7 +748,7 @@
 }
 
 .home-project-image {
-    height: 340px;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
 }
 
@@ -1476,10 +1476,6 @@ body.home-project-modal-open {
         grid-template-columns: 1fr;
     }
 
-    .home-project-image {
-        height: 360px;
-    }
-
     .testimonial-art {
         display: block;
     }
@@ -1862,10 +1858,6 @@ body.home-project-modal-open {
         gap: 58px 90px;
     }
 
-    .home-project-image {
-        height: 350px;
-    }
-
     .project-number {
         top: 33%;
         right: -40px;
@@ -1878,7 +1870,6 @@ body.home-project-modal-open {
         transform: translateY(-20px);
     }
 
-    .home-project-card > div:last-child,
     .projects-link {
         display: none;
     }
@@ -1962,4 +1953,11 @@ body.home-project-modal-open {
     .landing-page-rebuilt footer .footer-grid > div:nth-child(3) {
         padding-left: 20px;
     }
+}
+
+/* Keep the complete Aurum thumbnail visible, including on hover. */
+.home-project-card.project-thumbnail-contain .home-project-image img {
+    object-fit: contain;
+    object-position: center;
+    transform: none;
 }

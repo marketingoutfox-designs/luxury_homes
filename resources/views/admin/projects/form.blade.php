@@ -7,6 +7,7 @@
     <label>Status<input name="status" value="{{ old('status', $project?->status ?? 'Completed') }}"></label>
     <label>Location<input name="location" value="{{ old('location', $project?->location) }}"></label>
     <label>Address<input name="address" maxlength="500" value="{{ old('address', data_get($project?->facts, 'address')) }}" placeholder="Full property address"></label>
+    <label>Project Years<input name="years" maxlength="30" value="{{ old('years', data_get($project?->facts, 'years')) }}" placeholder="2024–2027"></label>
     <label>Sort Order<input name="sort_order" type="number" min="0" value="{{ old('sort_order', $project?->sort_order ?? 0) }}"></label>
     <label class="upload-field">
         Card Image
