@@ -86,12 +86,17 @@
 
         <div class="contact-testimonial-window">
             <div class="contact-testimonial-track" data-contact-testimonial-track>
-                @foreach (range(1, 3) as $testimonial)
+                @foreach (require resource_path('data/testimonials.php') as $testimonial)
                     <article class="contact-testimonial-card">
-                        <img src="/images/luxury-homes/landing-client.png" alt="Mrs Kalpana Sharma">
+                        @if ($testimonial['name'] === 'Mrs Kalpana Sharma')
+                            <img src="/images/luxury-homes/landing-client.png" alt="">
+                        @else
+                            <div class="contact-testimonial-avatar testimonial-initials" aria-hidden="true">{{ $testimonial['initials'] }}</div>
+                        @endif
                         <span class="contact-quote-mark">“</span>
-                        <p>This is a really, really lovely house — absolutely brilliant! The first thing you notice is the incredible feeling of space; the bedrooms and bathrooms have been designed so well and feel wonderfully spacious. The balcony is an absolute masterpiece—it creates such a great atmosphere. From the impressive pillars to the high-quality finish you see everywhere you look, the craftsmanship really speaks for itself. Even the small details, like the green patch in the parking area, make a huge difference. I haven't seen many houses like this; it's truly superb and a pleasure to experience!</p>
-                        <strong>Mrs Kalpana Sharma</strong>
+                        <p>{{ $testimonial['quote'] }}</p>
+                        <strong>{{ $testimonial['name'] }}</strong>
+                        <small>{{ $testimonial['property'] }}</small>
                     </article>
                 @endforeach
             </div>

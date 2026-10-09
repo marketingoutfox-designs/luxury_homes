@@ -193,7 +193,7 @@
                     }
                 @endphp
                 <a
-                    class="home-project-card reveal{{ $project->slug === 'aurum-residences' ? ' project-thumbnail-contain' : '' }}"
+                    class="home-project-card reveal project-thumbnail-contain"
                     data-project-status="{{ str_contains(strtolower($project->status ?: ''), 'complet') ? 'completed' : 'ongoing' }}"
                     data-home-project
                     data-project-title="{{ $project->title }}"

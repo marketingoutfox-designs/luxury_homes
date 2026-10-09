@@ -60,7 +60,8 @@
                     }
                 @endphp
                 <button
-                    class="works-card{{ $project->slug === 'aurum-residences' ? ' project-thumbnail-contain' : '' }}"
+                    class="works-card"
+                    data-project-slug="{{ $project->slug }}"
                     type="button"
                     data-project-status="{{ $filterStatus }}"
                     data-project-number="{{ $projectNumber }}"
@@ -75,8 +76,10 @@
                     aria-label="Open {{ $project->title }} project"
                 >
                     <span class="works-card-media" aria-hidden="true">
+                        <span class="works-card-photo">
                         <img class="works-card-image works-card-image-default" src="{{ $cardImage }}" alt="">
                         <img class="works-card-image works-card-image-hover" src="{{ $hoverImage }}" alt="">
+                        </span>
                     </span>
                     <span class="works-card-shade" aria-hidden="true"></span>
                     <span class="works-card-caption">

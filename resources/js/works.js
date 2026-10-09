@@ -3,6 +3,18 @@ const worksPage = document.querySelector('.works-design');
 if (worksPage) {
     const filters = [...document.querySelectorAll('[data-works-filter]')];
     const cards = [...document.querySelectorAll('.works-card')];
+    cards.forEach((card) => {
+        const image = card.querySelector('.works-card-image-default');
+        if (!image) return;
+        const setCoverScale = () => {
+            if (!image.naturalWidth || !image.naturalHeight) return;
+            const ratio = image.naturalWidth / image.naturalHeight;
+            card.style.setProperty('--works-cover-scale', Math.max(ratio, 1 / ratio));
+        };
+        image.addEventListener('load', setCoverScale);
+        setCoverScale();
+    });
+
     const modal = document.querySelector('[data-works-modal]');
     const panel = modal?.querySelector('.works-modal-panel');
     const slidesContainer = modal?.querySelector('[data-modal-slides]');

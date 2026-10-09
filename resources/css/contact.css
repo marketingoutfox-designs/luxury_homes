@@ -287,7 +287,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.contact-testimonial-card > img {
+.contact-testimonial-card > img,
+.contact-testimonial-avatar {
     position: absolute;
     top: -24px;
     left: 50%;
@@ -468,4 +469,20 @@
 /* Universal paragraph sizing takes precedence over reference-specific text sizes. */
 .contact-design p {
     font-size: 13px !important;
+}
+
+.contact-testimonial-card p { white-space: pre-line; }
+.contact-testimonial-avatar {
+    display: grid;
+    place-items: center;
+    background: #192d43;
+    color: var(--contact-gold);
+    border: 1px solid var(--contact-gold);
+    font-size: 24px;
+}
+.contact-testimonial-card .testimonial-draft {
+    color: #d9bd78;
+    font-size: 10px;
+    margin-bottom: 12px;
+    text-align: center;
 }

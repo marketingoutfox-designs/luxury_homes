@@ -173,24 +173,33 @@ body.works-design {
     position: relative;
     display: block;
     width: 100%;
-    aspect-ratio: 1 / 1;
     padding: 0;
     overflow: hidden;
     border: 0;
-    background: #192d43;
+    background: transparent;
     color: var(--works-white);
     cursor: pointer;
     text-align: left;
-    transition: opacity .32s ease, transform .55s cubic-bezier(.16, 1, .3, 1);
+    transition: transform .35s ease;
 }
 
 .works-card.is-hidden { display: none; }
 
 .works-card-media {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: #192d43;
+}
+
+.works-card-photo {
     position: absolute;
     inset: 0;
     overflow: hidden;
-    background: #192d43;
+    transform: scale(1);
+    transition: transform .7s cubic-bezier(.2, .7, .2, 1);
 }
 
 .works-card-image {
@@ -198,114 +207,68 @@ body.works-design {
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center bottom;
-    transform-origin: center center;
-    will-change: transform;
-    transition: opacity .55s ease, transform 1s cubic-bezier(.16, 1, .3, 1), filter .45s ease;
+    object-fit: contain;
+    object-position: center;
+    transform: scale(var(--works-cover-scale, 1));
+    transition: opacity .4s ease, transform .7s cubic-bezier(.2, .7, .2, 1);
 }
 
-.works-card-image-default {
-    opacity: 1;
-    /* Crops canvas margins already embedded in older uploaded images. */
-    transform: scale(1.16);
-    filter: brightness(.68) saturate(.82);
-}
-
-.works-card-image-hover {
-    opacity: 0;
-    transform: scale(1.02);
-    filter: brightness(.86) saturate(.9);
-}
-
-.works-card-shade {
-    position: absolute;
-    inset: 0;
-    background: rgba(8, 22, 36, .26);
-    transition: opacity .42s ease;
-}
+.works-card-image-default { opacity: 1; }
+.works-card-image-hover { opacity: 0; }
+.works-card-shade { display: none; }
 
 .works-card-caption {
-    position: absolute;
-    right: auto;
-    bottom: 24px;
-    left: 0;
-    width: 84%;
-    min-height: 122px;
-    padding: 27px 30px 25px;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: rgba(16, 36, 56, .94);
-    transform: translateY(calc(125% + 26px));
-    transition: transform .62s cubic-bezier(.16, 1, .3, 1);
-    will-change: transform;
+    min-height: 76px;
+    padding: 15px 30px 15px 0;
+    border-bottom: 1px solid rgba(201, 155, 36, .3);
 }
 
 .works-card-caption small {
     color: var(--works-gold);
-    font-size: 14px;
-    line-height: 1.2;
-    letter-spacing: .19em;
+    font-size: 10px;
+    line-height: 1.4;
+    letter-spacing: .12em;
     text-transform: uppercase;
-    opacity: 0;
-    transform: translateY(12px);
-    transition: opacity .3s ease, transform .42s cubic-bezier(.16, 1, .3, 1);
 }
 
 .works-card-caption strong {
-    margin-top: 10px;
-    padding-right: 40px;
-    font-size: 17px;
+    margin-top: 7px;
+    font-size: 13px;
     font-weight: 500;
-    line-height: 1.45;
-    letter-spacing: .12em;
+    line-height: 1.4;
+    letter-spacing: .07em;
     text-transform: uppercase;
-    opacity: 0;
-    transform: translateY(13px);
-    transition: opacity .32s ease, transform .45s cubic-bezier(.16, 1, .3, 1);
 }
 
 .works-card-caption i {
     position: absolute;
-    right: 24px;
+    right: 0;
     top: 50%;
     color: var(--works-gold);
-    font-size: 24px;
+    font-size: 22px;
     font-style: normal;
-    line-height: 1;
-    opacity: 0;
-    transform: translate(-18px, -50%);
-    transition: opacity .3s ease, transform .48s cubic-bezier(.16, 1, .3, 1);
+    transform: translateY(-50%);
+    transition: translate .35s ease;
 }
 
-.works-card:is(:hover, :focus-visible) { transform: translateY(-4px); }
-.works-card:is(:hover, :focus-visible) .works-card-image-default {
-    opacity: 0;
-    transform: scale(1.25);
+.works-card:is(:hover, :focus-visible) .works-card-image-default { opacity: 1; }
+.works-card:is(:hover, :focus-visible) .works-card-image-hover { opacity: 0; }
+.works-card:is(:hover, :focus-visible) .works-card-caption i { translate: 3px 0; }
+
+@media (hover: hover) and (pointer: fine) {
+    .works-card:hover .works-card-photo {
+        transform: scale(1.06);
+    }
+    .works-card:hover .works-card-image { transform: scale(1); }
 }
-.works-card:is(:hover, :focus-visible) .works-card-image-hover {
-    opacity: 1;
-    transform: scale(1.16);
-    filter: brightness(1) saturate(1);
+.works-card:focus-visible .works-card-photo {
+    transform: scale(1.06);
 }
-.works-card:is(:hover, :focus-visible) .works-card-shade { opacity: 0; }
-.works-card:is(:hover, :focus-visible) .works-card-caption { transform: translateY(0); }
-.works-card:is(:hover, :focus-visible) .works-card-caption small {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: .18s;
-}
-.works-card:is(:hover, :focus-visible) .works-card-caption strong {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: .24s;
-}
-.works-card:is(:hover, :focus-visible) .works-card-caption i {
-    opacity: 1;
-    transform: translate(0, -50%);
-    transition-delay: .29s;
-}
+.works-card:focus-visible .works-card-image { transform: scale(1); }
 
 .works-empty { grid-column: 1 / -1; text-align: center; }
 
@@ -439,9 +402,8 @@ body.works-modal-open { overflow: hidden; }
     .works-filter { width: 100%; }
     .works-divider { margin: 27px 0 36px; }
     .works-grid { grid-template-columns: 1fr; gap: 30px; }
-    .works-card-caption { bottom: 16px; min-height: 112px; padding: 23px 24px 21px; }
-    .works-card-caption small { font-size: 12px; }
-    .works-card-caption strong { font-size: 15px; }
+    .works-card-caption small { font-size: 10px; }
+    .works-card-caption strong { font-size: 12px; }
     .works-modal { padding: 12px; }
     .works-modal-panel { max-height: calc(100vh - 24px); }
     .works-modal-slides { aspect-ratio: .92; }
@@ -453,12 +415,4 @@ body.works-modal-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
     .works-banner-image { animation: none; }
     .works-card, .works-card *, .works-modal, .works-modal * { transition-duration: .01ms !important; }
-}
-
-/* Override the gallery card zoom for the complete Aurum thumbnail. */
-.works-card.project-thumbnail-contain .works-card-image,
-.works-card.project-thumbnail-contain:is(:hover, :focus-visible) .works-card-image {
-    object-fit: contain;
-    object-position: center;
-    transform: none;
 }
